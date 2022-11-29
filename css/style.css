@@ -22,7 +22,6 @@ main {
 }
 
 .information {
-    text-transform: uppercase;
     position: absolute;
     top: 72px;
     right: 68px;
@@ -38,6 +37,7 @@ main {
     letter-spacing: 0.09em;
     color: #FFFFFF;
     margin: 0;
+    text-transform: uppercase;
 }
 
 .header__latin {
@@ -50,6 +50,7 @@ main {
     align-self: flex-end;
     margin: 0;
     color: #FFD029;
+    text-transform: uppercase;
 }
 
 .planets {
@@ -201,18 +202,18 @@ main {
     background-position: center;
 }
 
-.planet-information {
+.planet__information {
     display: flex;
     flex-direction: column;
     width: 640px;
     margin-right: 68px;
 }
 
-.planet-information__info {
+.planet__names {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.planet-information__description {
+.planet__description {
     font-family: 'Roboto Condensed';
     font-style: normal;
     font-weight: 300;

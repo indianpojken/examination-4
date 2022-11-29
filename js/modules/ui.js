@@ -3,24 +3,23 @@ const elements = {
     frontpage: document.querySelector('#frontpage'),
     planet: document.querySelector('#planet'),
   },
-  planetInformation: {
-    header: {
-      swedish: document.querySelector('.planet-information header h1'),
-      latin: document.querySelector('.planet-information header h2'),
-    },
-    description: document.querySelector('.planet-information__description'),
+  planet: {
+    name: document.querySelector('.planet__names header h1'),
+    latinName: document.querySelector('.planet__names header h2'),
+    description: document.querySelector('.planet__description'),
     data: {
       circumference: document.querySelector('#circumference'),
       distance: document.querySelector('#distance'),
-      maxTemp: document.querySelector('#max-temp'),
-      minTemp: document.querySelector('#min-temp'),
+      temp: {
+        day: document.querySelector('#max-temp'),
+        night: document.querySelector('#min-temp'),
+      },
     },
     moons: {
       section: document.querySelector('.planet__moons'),
       list: document.querySelector('.planet__moons > p'),
     },
   },
-
   star: document.querySelector('.star'),
   planets: document.querySelector('.planets')
 };
@@ -37,39 +36,37 @@ function displayInfo(planet) {
     elements.star.classList.add(`planet--active`);
   }
 
-  elements.planetInformation.header.swedish.innerHTML = planet.name;
-  elements.planetInformation.header.latin.innerHTML = planet.latinName;
-  elements.planetInformation.description.innerHTML = planet.desc;
+  elements.planet.name.innerText = planet.name;
+  elements.planet.latinName.innerText = planet.latinName;
+  elements.planet.description.innerText = planet.desc;
 
-  elements.planetInformation.data.circumference.innerHTML =
-    new Number(planet.circumference).toLocaleString() + ' km';
+  const formatKM = (number) => `${new Number(number).toLocaleString()} km`;
+  elements.planet.data.circumference.innerText = formatKM(planet.circumference);
+  elements.planet.data.distance.innerText = formatKM(planet.distance);
 
-  elements.planetInformation.data.distance.innerHTML =
-    new Number(planet.distance).toLocaleString() + ' km';
-
-  elements.planetInformation.data.maxTemp.innerHTML = planet.temp.day + 'C';
-  elements.planetInformation.data.minTemp.innerHTML = planet.temp.night + 'C';
+  elements.planet.data.temp.day.innerText = planet.temp.day + 'C';
+  elements.planet.data.temp.night.innerText = planet.temp.night + 'C';
 
   if (planet.moons.length) {
-    elements.planetInformation.moons.section.classList.remove('hidden');
-    elements.planetInformation.moons.list.innerHTML =
+    elements.planet.moons.section.classList.remove('hidden');
+    elements.planet.moons.list.innerText =
       planet.moons.reduce((prev, cur) => `${prev}, ${cur}`);
   } else {
-    elements.planetInformation.moons.section.classList.add('hidden');
+    elements.planet.moons.section.classList.add('hidden');
   }
 }
 
 function renderPlanet(planet) {
   const planetElement = document.createElement('aside');
-  const ringElement = document.createElement('aside');
 
   planetElement.className = `${planet.type} planet__${planet.latinName.toLowerCase()}`;
+
   planetElement.addEventListener('click', () => {
     toggleView();
     displayInfo(planet);
   });
 
-  planetElement.append(ringElement);
+  planetElement.append(document.createElement('aside'));
 
   if (planet.type === 'planet') {
     elements.planets.append(planetElement);
