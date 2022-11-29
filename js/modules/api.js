@@ -3,7 +3,7 @@ I choose to seperate this module from the rest,
 to isolate the 'endpoint-variable'
 and 'getKey-function' - whom doesn't have any use
 outside of the 'getPlanets-function' --
-thus I only only expose and it also provides self-documentation.
+thus I only only expose what and it also provides self-documentation.
 */
 
 const endpoint = 'https://fathomless-shelf-54969.herokuapp.com';

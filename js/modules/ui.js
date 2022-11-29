@@ -5,35 +5,25 @@ const elements = {
   },
   planetInformation: {
     header: {
-      swedish: document.querySelector('.planet-information__swedish'),
-      latin: document.querySelector('.planet-information__latin'),
+      swedish: document.querySelector('.planet-information header h1'),
+      latin: document.querySelector('.planet-information header h2'),
     },
     description: document.querySelector('.planet-information__description'),
-    circumference: document.querySelector('#circumference'),
-    distance: document.querySelector('#distance'),
-    maxTemp: document.querySelector('#max-temp'),
-    minTemp: document.querySelector('#min-temp'),
+    data: {
+      circumference: document.querySelector('#circumference'),
+      distance: document.querySelector('#distance'),
+      maxTemp: document.querySelector('#max-temp'),
+      minTemp: document.querySelector('#min-temp'),
+    },
     moons: {
       section: document.querySelector('.planet__moons'),
       list: document.querySelector('.planet__moons > p'),
     },
   },
+
   star: document.querySelector('.star'),
   planets: document.querySelector('.planets')
-}
-
-// hashmap to translate names in response, from swedish to english. Only english was allowed.
-const planets = new Map([
-  ['Solen', 'sun'],
-  ['Merkurius', 'mercury'],
-  ['Venus', 'venus'],
-  ['Jorden', 'earth'],
-  ['Mars', 'mars'],
-  ['Jupiter', 'jupiter'],
-  ['Saturnus', 'saturn'],
-  ['Uranus', 'uranus'],
-  ['Neptunus', 'neptune']
-]);
+};
 
 function toggleView() {
   elements.pages.frontpage.classList.toggle('hidden');
@@ -41,24 +31,24 @@ function toggleView() {
 }
 
 function displayInfo(planet) {
-  elements.star.classList = `star planet__${planets.get(planet.name)}`;
+  elements.star.classList = `star planet__${(planet.latinName.toLowerCase())}`;
 
-  if (planet.type !== 'star') {
-    elements.star.classList.add(`planet__${planets.get(planet.name)}--active`);
+  if (planet.type === 'planet') {
+    elements.star.classList.add(`planet--active`);
   }
 
   elements.planetInformation.header.swedish.innerHTML = planet.name;
   elements.planetInformation.header.latin.innerHTML = planet.latinName;
   elements.planetInformation.description.innerHTML = planet.desc;
 
-  elements.planetInformation.circumference.innerHTML =
+  elements.planetInformation.data.circumference.innerHTML =
     new Number(planet.circumference).toLocaleString() + ' km';
 
-  elements.planetInformation.distance.innerHTML =
+  elements.planetInformation.data.distance.innerHTML =
     new Number(planet.distance).toLocaleString() + ' km';
 
-  elements.planetInformation.maxTemp.innerHTML = planet.temp.day + 'C';
-  elements.planetInformation.minTemp.innerHTML = planet.temp.night + 'C';
+  elements.planetInformation.data.maxTemp.innerHTML = planet.temp.day + 'C';
+  elements.planetInformation.data.minTemp.innerHTML = planet.temp.night + 'C';
 
   if (planet.moons.length) {
     elements.planetInformation.moons.section.classList.remove('hidden');
@@ -73,7 +63,7 @@ function renderPlanet(planet) {
   const planetElement = document.createElement('aside');
   const ringElement = document.createElement('aside');
 
-  planetElement.className = `${planet.type} planet__${planets.get(planet.name)}`;
+  planetElement.className = `${planet.type} planet__${planet.latinName.toLowerCase()}`;
   planetElement.addEventListener('click', () => {
     toggleView();
     displayInfo(planet);
