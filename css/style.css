@@ -78,7 +78,7 @@ main {
 .planet:hover {
     border-radius: 50%;
     animation: fadeIn 1s;
-    box-shadow: #fff 0px 0px 0px 2px;
+    box-shadow: #000 0px 0px 0px 2px, #fff 0px 0px 0px 3px;
 }
 
 .planet__solis {
@@ -197,7 +197,7 @@ main {
     height: 100%;
     animation: fadeIn 1s;
     background-image: url("../images/stars.png");
-    background-size: 1100px;
+    background-size: 75vw;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -220,8 +220,8 @@ main {
     font-size: 18px;
     line-height: 170%;
     color: #fff;
-    max-height: 300px;
-    overflow: scroll;
+    max-height: calc(100vh - 550px);
+    overflow: auto;
 }
 
 .planet__statistics {

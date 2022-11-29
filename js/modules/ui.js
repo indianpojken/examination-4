@@ -1,3 +1,14 @@
+/*
+Jag har valt att separera denna modul från resten,
+för att endast exponera renderPlanet. Eftersom att
+att resten av funktionerna och elementen används intert
+inom modulen, minskar man risken för att modifiera variabler,
+importerar och kallar funktioner som ej bör.
+Det skapar även en smidig struktur när dom olika modulerna
+byggs samman i index.js (renderPlanet tar ett object från api-responsen).
+Namnet på modulen ger också en självdokumenterande effekt, då det är tydligt
+att den har med själva gränssnittet att göra.
+*/
 const elements = {
   pages: {
     frontpage: document.querySelector('#frontpage'),
