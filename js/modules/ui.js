@@ -25,7 +25,7 @@ function toggleView() {
 }
 
 function displayInfo(planet) {
-  elements.star.classList = `star planet__${(planet.latinName.toLowerCase())}`;
+  elements.star.classList = `star planet--${(planet.latinName.toLowerCase())}`;
 
   if (planet.type === 'planet') {
     elements.star.classList.add(`planet--active`);
@@ -43,7 +43,7 @@ function displayInfo(planet) {
       element.textContent = content.join(', ');
     }
 
-    if (content.length) {
+    if (content.toString().length) {
       element.parentElement.classList.remove('hidden');
     } else {
       element.parentElement.classList.add('hidden');
@@ -54,7 +54,7 @@ function displayInfo(planet) {
 function renderPlanet(planet) {
   const planetElement = document.createElement('aside');
 
-  planetElement.className = `${planet.type} planet__${planet.latinName.toLowerCase()}`;
+  planetElement.className = `${planet.type} planet--${planet.latinName.toLowerCase()}`;
 
   planetElement.addEventListener('click', () => {
     toggleView();
