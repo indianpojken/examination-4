@@ -14,7 +14,7 @@ const elements = {
     frontpage: document.querySelector('#frontpage'),
     planet: document.querySelector('#planet'),
   },
-  data: document.querySelectorAll('.data'),
+  data: document.querySelectorAll('[data-property]'),
   star: document.querySelector('.star'),
   planets: document.querySelector('.planets')
 };
@@ -32,8 +32,7 @@ function displayInfo(planet) {
   }
 
   elements.data.forEach((element) => {
-    const id = element.id;
-    const [a, b] = id.split('.');
+    const [a, b] = element.getAttribute('data-property').split('.');
     const content = planet[a][b] ?? planet[a];
 
     element.textContent = content;
@@ -41,12 +40,13 @@ function displayInfo(planet) {
     if (element.classList.contains('unit')) {
       element.textContent = new Number(content).toLocaleString();
     } else if (element.classList.contains('list')) {
-      if (content.length) {
-        document.querySelector('#' + id).parentElement.classList.remove('hidden');
-        element.textContent = content.join(', ');
-      } else {
-        document.querySelector('#' + id).parentElement.classList.add('hidden');
-      }
+      element.textContent = content.join(', ');
+    }
+
+    if (content.length) {
+      element.parentElement.classList.remove('hidden');
+    } else {
+      element.parentElement.classList.add('hidden');
     }
   });
 }
