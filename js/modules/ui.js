@@ -32,8 +32,8 @@ function displayInfo(planet) {
   }
 
   elements.data.forEach((element) => {
-    const [a, b] = element.getAttribute('data-property').split('.');
-    const content = planet[a][b] ?? planet[a];
+    const content = element.getAttribute('data-property')
+      .split('.').reduce((object, key) => object[key], planet);
 
     element.textContent = content;
 
