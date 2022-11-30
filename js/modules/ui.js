@@ -14,23 +14,7 @@ const elements = {
     frontpage: document.querySelector('#frontpage'),
     planet: document.querySelector('#planet'),
   },
-  planet: {
-    name: document.querySelector('.planet__names header h1'),
-    latinName: document.querySelector('.planet__names header h2'),
-    description: document.querySelector('.planet__description'),
-    data: {
-      circumference: document.querySelector('#circumference'),
-      distance: document.querySelector('#distance'),
-      temp: {
-        day: document.querySelector('#max-temp'),
-        night: document.querySelector('#min-temp'),
-      },
-    },
-    moons: {
-      section: document.querySelector('.planet__moons'),
-      list: document.querySelector('.planet__moons > p'),
-    },
-  },
+  data: document.querySelectorAll('.data'),
   star: document.querySelector('.star'),
   planets: document.querySelector('.planets')
 };
@@ -47,24 +31,24 @@ function displayInfo(planet) {
     elements.star.classList.add(`planet--active`);
   }
 
-  elements.planet.name.innerText = planet.name;
-  elements.planet.latinName.innerText = planet.latinName;
-  elements.planet.description.innerText = planet.desc;
+  elements.data.forEach((element) => {
+    const id = element.id;
+    const [a, b] = id.split('.');
+    const content = planet[a][b] ?? planet[a];
 
-  const formatKM = (number) => `${new Number(number).toLocaleString()} km`;
-  elements.planet.data.circumference.innerText = formatKM(planet.circumference);
-  elements.planet.data.distance.innerText = formatKM(planet.distance);
+    element.textContent = content;
 
-  elements.planet.data.temp.day.innerText = planet.temp.day + 'C';
-  elements.planet.data.temp.night.innerText = planet.temp.night + 'C';
-
-  if (planet.moons.length) {
-    elements.planet.moons.section.classList.remove('hidden');
-    elements.planet.moons.list.innerText =
-      planet.moons.reduce((prev, cur) => `${prev}, ${cur}`);
-  } else {
-    elements.planet.moons.section.classList.add('hidden');
-  }
+    if (element.classList.contains('unit')) {
+      element.textContent = new Number(content).toLocaleString();
+    } else if (element.classList.contains('list')) {
+      if (content.length) {
+        document.querySelector('#' + id).parentElement.classList.remove('hidden');
+        element.textContent = content.join(', ');
+      } else {
+        document.querySelector('#' + id).parentElement.classList.add('hidden');
+      }
+    }
+  });
 }
 
 function renderPlanet(planet) {

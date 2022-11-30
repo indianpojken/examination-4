@@ -29,7 +29,7 @@ main {
     flex-direction: column;
 }
 
-.header__swedish {
+h1 {
     font-family: 'Secular One';
     font-style: normal;
     font-weight: 400;
@@ -40,7 +40,7 @@ main {
     text-transform: uppercase;
 }
 
-.header__latin {
+h2 {
     font-family: 'Lora';
     font-style: normal;
     font-weight: 400;
@@ -260,4 +260,16 @@ main {
 
 .planet__moons {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.unit--c::after {
+    content: 'C';
+}
+
+.unit--km::after {
+    content: ' km';
+}
+
+.unit--days::after {
+    content: ' dag(ar)';
 }

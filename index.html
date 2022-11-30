@@ -15,12 +15,12 @@
 </head>
 
 <body>
-  <aside class="star planet__sun"></aside>
+  <aside class="star planet__solis"></aside>
 
   <main id="frontpage">
     <header class="information">
-      <h1 class="header__swedish">Solsystemet</h1>
-      <h2 class="header__latin">Solaris</h2>
+      <h1>Solsystemet</h1>
+      <h2>Solaris</h2>
     </header>
 
     <section class="planets"></section>
@@ -29,37 +29,42 @@
   <main id="planet" class="hidden">
     <section>
       <section class="planet__information">
+
         <section class="planet__names">
           <header>
-            <h1 class="header__swedish"></h1>
-            <h2 class="header__latin"></h2>
+            <h1 id="name" class="data"></h1>
+            <h2 id="latinName" class="data"></h2>
           </header>
-          <p class="planet__description"></p>
+          <p id="desc" class="planet__description data"></p>
         </section>
 
         <section class="planet__statistics">
           <article class="statistic">
             <h3 class="statistic__title">omkrets</h3>
-            <p id="circumference" class="statistic__data"></p>
+            <p id="circumference" class="statistic__data data unit unit--km"></p>
           </article>
+
           <article class="statistic">
             <h3 class="statistic__title">km från solen</h3>
-            <p id="distance" class="statistic__data"></p>
+            <p id="distance" class="statistic__data data unit unit--km"></p>
           </article>
+
           <article class="statistic">
             <h3 class="statistic__title">max temperatur</h3>
-            <p id="max-temp" class="statistic__data"></p>
+            <p id="temp.day" class="statistic__data data unit unit--c"></p>
           </article>
+
           <article class="statistic">
             <h3 class="statistic__title">min temperatur</h3>
-            <p id="min-temp" class="statistic__data"></p>
+            <p id="temp.night" class="statistic__data data unit unit--c"></p>
           </article>
         </section>
 
         <section class="planet__moons">
           <h3 class="statistic__title">månar</h3>
-          <p class="statistic__data"></p>
+          <p id="moons" class="statistic__data data list"></p>
         </section>
+
       </section>
     </section>
   </main>
