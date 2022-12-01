@@ -1,10 +1,9 @@
 /*
-Jag har valt att separera denna modul från resten,
-för att isolera variablar (endpoint) och funktioner (getKey)
-som inte har ett syfte att användas utanför denna modul.
-En possitiv effekt är också att det ger självdokumenterande,
-där man snabbt förstår att man använder funktionen som exponeras
-till anropar ett api.
+Jag har valt att separera denna kod till en modul,
+för att isolera variabeln ’endpoint’ och funktionen ’getKey’
+- som inte behöver, eller bör exekveras utanför funktionen ’getPlanets’.
+Modulens namn ger även en dokumenterande effekt, då det blir tydligt att
+funktion ’getPlanets’ hämtar data från ett API.
 */
 
 const endpoint = 'https://fathomless-shelf-54969.herokuapp.com';

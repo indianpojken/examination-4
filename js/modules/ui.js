@@ -1,14 +1,13 @@
 /*
-Jag har valt att separera denna modul från resten,
-för att endast exponera renderPlanet. Eftersom att
-att resten av funktionerna och elementen används intert
-inom modulen, minskar man risken för att modifiera variabler,
-importerar och kallar funktioner som ej bör.
-Det skapar även en smidig struktur när dom olika modulerna
-byggs samman i index.js (renderPlanet tar ett object från api-responsen).
-Namnet på modulen ger också en självdokumenterande effekt, då det är tydligt
-att den har med själva gränssnittet att göra.
+Jag har valt att separera denna kod till en modul,
+för att isolera vissa funktioner och variabeln ’elements’ - för minska risken
+att modifiera något utav dess egenskaper. Då funktionerna ’toggleView’ och ’displayInfo’
+endast används inom funktionen ’renderPlanet’, skapar det en tydlighet med vilken
+funktion som ska användas då endast den exporteras.
+Modulens namn ger även en dokumenterande effekt, då det blir tydligt att
+funktion ’renderPlanet’ påverkar gränssnittet.
 */
+
 const elements = {
   pages: {
     frontpage: document.querySelector('#frontpage'),
