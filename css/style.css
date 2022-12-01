@@ -12,7 +12,7 @@ body {
     overflow: hidden;
 }
 
-main {
+.page {
     margin: 0;
     width: 100%;
     display: flex;
@@ -21,7 +21,7 @@ main {
     animation: fadeIn 1s;
 }
 
-.information {
+.logo {
     position: absolute;
     top: 72px;
     right: 68px;
@@ -179,37 +179,39 @@ h2 {
     animation: ease-in;
 }
 
-.zocom-logo {
+.footer-logo {
     position: absolute;
     bottom: 3rem;
-    left: 50%;
-    right: 50%;
+    right: calc(50% - 40px);
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
-#planet>section {
+#planet {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     animation: fadeIn 1s;
-    background-image: url("../images/stars.png");
-    background-size: 75vw;
+    margin: auto auto;
+}
+
+.bg--stars {
+    background-image: url("../images/stars.svg");
+    background-size: 78vw;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: 80% 50%;
 }
 
 .planet__information {
     display: flex;
     flex-direction: column;
     width: 640px;
-    margin-right: 68px;
 }
 
-.planet__names {
+.planet__name {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -224,18 +226,18 @@ h2 {
     overflow: auto;
 }
 
-.planet__statistics {
+.planet__dataset {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: auto;
 }
 
-.statistic {
+.planet__data-entry {
     display: flex;
     flex-direction: column;
 }
 
-.statistic__title {
+.planet__data-title {
     font-family: 'Secular One';
     font-style: normal;
     font-weight: 400;
@@ -247,7 +249,7 @@ h2 {
     margin-bottom: 0;
 }
 
-.statistic__data {
+.planet__data {
     font-family: 'Roboto Condensed';
     font-style: normal;
     font-weight: 300;
